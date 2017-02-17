@@ -1,0 +1,14 @@
+ed56c9d787239b35e1db82dc7db00287 *DESCRIPTION
+a2263ac642175b17ba979ee8b90b25de *LICENSE
+29b96b084e69bacf43491012a5dba33e *NAMESPACE
+904effcefdcf418f789d6a4c5082531e *R/functions.R
+7d2b6b015dc91b5a60f2194ebe19508d *README.md
+1ff66e40e7e3d0bf9b467bd1889adcda *build/vignette.rds
+f656e12ba891eafd9399bd368f4a482e *inst/doc/introduction_to_prcr.R
+b1f48399cd5094005abb7e4be72a8210 *inst/doc/introduction_to_prcr.Rmd
+1238349dc8d2be33f17277f21a5c3bdb *inst/doc/introduction_to_prcr.html
+82cba8f1baa44077afbaae74e262be5c *man/create_profiles.Rd
+ab32256b037c79b121a37eefa981de22 *man/plot.prcr.Rd
+e4239dedcfebdec1de98f255a8225ce7 *man/print.prcr.Rd
+5805a860356a942cca32a9ddd37cf802 *man/summary.prcr.Rd
+b1f48399cd5094005abb7e4be72a8210 *vignettes/introduction_to_prcr.Rmd
