@@ -1,13 +1,12 @@
-dffeba638a5ff69dd2c1dcae693455b1 *DESCRIPTION
+760d85a0debc2e40bc508bf7df28b796 *DESCRIPTION
 a2263ac642175b17ba979ee8b90b25de *LICENSE
 29b96b084e69bacf43491012a5dba33e *NAMESPACE
-558c518058c46710879a14968fbe33bb *NEWS.md
-087bdaef45b49259eea23939b047cd60 *R/functions.R
+8f1b86a4f20d27defbd49d732ee444d9 *R/functions.R
 e04f4b8c271c6fa1dbb9bb7c6f6e99b3 *README.md
-0dbd1400ee39f943a5a887e3d1671bb8 *build/vignette.rds
+a84e02b10da4d85b1d7e0c3c3548919d *build/vignette.rds
 f656e12ba891eafd9399bd368f4a482e *inst/doc/introduction_to_prcr.R
 6be8b4851c6473f248c17eab454b013c *inst/doc/introduction_to_prcr.Rmd
-001ebc97e3003b38668a05a44eefdf41 *inst/doc/introduction_to_prcr.html
+86eb9bc4f47034a2b2642a1bf9fb2b75 *inst/doc/introduction_to_prcr.html
 82cba8f1baa44077afbaae74e262be5c *man/create_profiles.Rd
 ab32256b037c79b121a37eefa981de22 *man/plot.prcr.Rd
 e4239dedcfebdec1de98f255a8225ce7 *man/print.prcr.Rd
