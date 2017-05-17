@@ -80,11 +80,11 @@ cluster_observations <- function(prepared_data,
     names(clustered_data)[[3]] <- "hierarchical_clustering_output"
     starting_points <- hclust_to_kmeans_function(prepared_data[[1]], clustered_data[[3]], n_profiles)
     clustered_data[[4]] <- kmeans_function(prepared_data[[1]], starting_points) # Fits k-means ithm with hierarchical vals as start value
-    if (clustered_data[[4]]$iter == 1) {
-        message(paste0("K-means algorithm converged: ", clustered_data[[4]]$iter, " iteration"))
-    } else {
-        message(paste0("K-means algorithm converged: ", clustered_data[[4]]$iter, " iterations"))
-    }
+    # if (clustered_data[[4]]$iter == 1) {
+    #     message(paste0("K-means algorithm converged: ", clustered_data[[4]]$iter, " iteration"))
+    # } else {
+    #     message(paste0("K-means algorithm converged: ", clustered_data[[4]]$iter, " iterations"))
+    # }
     names(clustered_data)[[4]] <- "kmeans_clustering_output"
     if (class(clustered_data[[4]]) == "kmeans") {
         attributes(clustered_data)$n_profiles <- n_profiles
@@ -118,7 +118,6 @@ calculate_statistics <- function(clustered_data, n_profiles){
     clustering_stats[[9]] <- dplyr::bind_cols(clustering_stats[[2]], tmp)
     names(clustering_stats)[[9]] <- "data_with_dummy_codes"
     clustering_stats[[2]]$cluster <- clustering_stats[[4]]$cluster
-    clustering_stats[[2]] <- dplyr::select_(clustering_stats[[2]], "cluster", dplyr::everything())
     return(clustering_stats)
 }
 
@@ -153,6 +152,64 @@ create_profiles <- function(df,
         y[[5]] <- NA
         names(y)[[5]] <- "r_squared"
         return(y)
+    }
+}
+
+#' Plot R^2 (r-squared) values for a range of number of profiles
+#' @details Returns ggplot2 plot of cluster centroids
+#' @param df with two or more columns with continuous variables
+#' @param ... unquoted variable names separated by commas
+#' @param to_center (TRUE or FALSE) for whether to center the raw data with M = 0
+#' @param to_scale Boolean (TRUE or FALSE) for whether to scale the raw data with SD = 1
+#' @param distance_metric Distance metric to use for hierarchical clustering; "squared_euclidean" is default but more options are available (see ?hclust)
+#' @param linkage Linkage method to use for hierarchical clustering; "complete" is default but more options are available (see ?dist)
+#' @param lower_bound the smallest number of profiles in the range of number of profiles to explore; defaults to 2
+#' @param upper_bound the largest number of profiles in the range of number of profiles to explore; defaults to 9
+#' @param r_squared_table if TRUE, then a table, rather than a plot, is returned; defaults to FALSE
+#' @return A list containing a ggplot2 object and a tibble for the R^2 values
+#' @examples
+#' df <- mtcars
+#' plot_r_squared(df, mpg, wt, hp, qsec, to_center = TRUE, lower_bound = 2, upper_bound = 4)
+#' @export
+
+plot_r_squared <- function(df,    
+                           ...,
+                           to_center = FALSE,
+                           to_scale = FALSE,
+                           distance_metric = "squared_euclidean",
+                           linkage = "complete",
+                           lower_bound = 2, 
+                           upper_bound = 9,
+                           r_squared_table = FALSE) {
+    
+    out <- data.frame(
+        cluster = lower_bound:upper_bound,
+        r_squared_value = rep(NA, (upper_bound - lower_bound) + 1)
+    )
+    
+    for (i in lower_bound:upper_bound) {
+        out[(i - 1), "r_squared_value"] <- create_profiles(df,
+                                                           ...,
+                                                           n_profiles = i, 
+                                                           to_center = to_center, 
+                                                           to_scale = to_scale, 
+                                                           distance_metric = distance_metric, 
+                                                           linkage = linkage)[[5]]
+    }
+    
+    out$r_squared_value <- round(out$r_squared_value, 3)
+    
+    out$cluster <- as.integer(out$cluster)
+    
+    p <- ggplot2::ggplot(out, ggplot2::aes_string(x = "cluster", y = "r_squared_value")) +
+        ggplot2::geom_point() +
+        ggplot2::geom_line()
+
+    if (r_squared_table == T) {
+        return(out)
+    } else {
+        print(p)
+        return(p)
     }
 }
 

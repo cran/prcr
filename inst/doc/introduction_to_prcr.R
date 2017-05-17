@@ -13,3 +13,10 @@ two_profile_solution$clustered_processed_data
 two_profile_solution$data
 two_profile_solution$data_with_dummy_code
 
+## ------------------------------------------------------------------------
+df <- mtcars
+plot_r_squared(df, mpg, wt, hp, qsec, to_center = TRUE, to_scale = TRUE, lower_bound = 2, upper_bound = 4)
+
+## ------------------------------------------------------------------------
+plot_r_squared(df, mpg, wt, hp, qsec, to_center = TRUE, to_scale = TRUE, lower_bound = 2, upper_bound = 4, r_squared_table = TRUE)
+
