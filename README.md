@@ -1,23 +1,39 @@
-
-## Background
+# prcr
 
 `prcr` is an `R` package for person-centered analysis. Person-centered analyses focus on clusters, or profiles, of observations, and their change over time or differences across factors. See [Bergman and El-Khouri (1999)](http://onlinelibrary.wiley.com/doi/10.1002/(SICI)1521-4036(199910)41:6%3C753::AID-BIMJ753%3E3.0.CO;2-K/abstract) for a description of the analytic approach. See [Corpus and Wormington (2014)](http://www.tandfonline.com/doi/abs/10.1080/00220973.2013.876225) for an example of person-centered analysis in psychology and education.
 
-## Example using mtcars
 
-In this example using the built-in to R `mtcars` data for fuel consumption and other information for 32 automobiles, the variables `disp` (for engine displacement, in cu. in.), `qsec` (for the 1/4 mile time, in seconds), and `wt` for weight (in 1000 lbs.) are clustered with a `2` cluster solution specified. Because the variables are in very different units, the `to_scale` argument is set to `TRUE`.
+## Installation
 
-    library(prcr)
-    mtcars_df <- as.data.frame(mtcars[, c("disp", "hp", "wt")])
-    two_profile_solution <- create_profiles(mtcars_df, 2, to_scale = T)
-    summary(two_profile_solution)
-    print(two_profile_solution)
-    plot(two_profile_solution)
+You can install prcr from CRAN with:
 
-The output has the class `prcr` and has slots for additional information that can be extracted from it, such as the r-squared (for comparing the relative fit of different cluster solutions) raw clustered data (i.e., for conducting statistical tests to determine whether the cluster centroids are different from one another and for use in additional analyses) and the processed data (i.e., for creating different plots of the cluster centroids).
+``` r
+install.packages("prcr")
+```
 
-    two_profile_solution$r_squared
-    two_profile_solution$clustered_raw_data
-    two_profile_solution$clustered_processed_data
+You can install development version from GitHub with:
 
-Functions for easily comparing the r-squared value for a range of cluster solutions, and for carrying out cross-validation of the clustering solution, will be added in future updates to the package. 
+``` r
+# install.packages("devtools")
+devtools::install_github("jrosen48/prcr")
+```
+
+## Example
+
+See examples of use of prcr in the [Introduction to prcr vignette](https://jrosen48.github.io/prcr/articles/introduction_to_prcr.html).
+
+## Code of Conduct
+
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms below.
+
+This Code of Conduct is adapted from the Contributor Covenant (http:contributor-covenant.org), version 1.0.0, available at [http://contributor-covenant.org/version/1/0/0/](http://contributor-covenant.org/version/1/0/0/)
+
+> As contributors and maintainers of this project, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.
+
+> We are committed to making participation in this project a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, or religion.
+
+> Examples of unacceptable behavior by participants include the use of sexual language or imagery, derogatory comments or personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.
+
+> Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct. Project maintainers who do not follow the Code of Conduct may be removed from the project team.
+
+> Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.
