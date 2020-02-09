@@ -1,7 +1,7 @@
 Package: prcr
 Type: Package
 Title: Person-Centered Analysis
-Version: 0.1.5
+Version: 0.2.1
 Authors@R: c(
     person(c("Joshua", "M"), "Rosenberg", role = c("aut", "cre"), email = "jmichaelrosenberg@gmail.com"),
     person(c("Jennifer", "A"), "Schmidt", role = "aut", email = "jaschmid@msu.edu"),
@@ -14,15 +14,17 @@ License: MIT + file LICENSE
 URL: https://github.com/jrosen48/prcr
 BugReports: https://github.com/jrosen48/prcr/issues
 LazyData: TRUE
-Imports: dplyr, tidyr, ggplot2, tibble, irr, lpSolve, purrr, class
-Suggests: rmarkdown, knitr
+Imports: dplyr, tidyr, ggplot2, tibble, irr, lpSolve, purrr, class,
+        forcats, magrittr
+Suggests: rmarkdown, knitr, devtools
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.2
+Depends: R (>= 2.10)
 NeedsCompilation: no
-Packaged: 2017-08-25 13:47:33 UTC; joshuarosenberg
+Packaged: 2020-02-09 13:08:49 UTC; jrosenb8
 Author: Joshua M Rosenberg [aut, cre],
   Jennifer A Schmidt [aut],
   Patrick N Beymer [aut],
   Rebecca R Steingut [ctb]
 Repository: CRAN
-Date/Publication: 2017-08-25 17:20:01 UTC
+Date/Publication: 2020-02-09 17:00:05 UTC
